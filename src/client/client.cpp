@@ -7,7 +7,7 @@ SOCKET sock=INVALID_SOCKET;
 #endif
 bool running = false;
 
-int client(std::string ip, int port,std::string name){
+int client(std::string ip, int port,std::string name,std::string username,std::string password){
 #ifdef __linux__
 	sock = 0;
 	struct sockaddr_in sockInfo;
@@ -91,6 +91,17 @@ int client(std::string ip, int port,std::string name){
 	}
 #endif
 	signal(SIGINT, Client_Ctrl_Handler);
+	SocketSend(sock, username);
+	SocketRead(sock);
+	SocketSend(sock, sha512(password));
+	std::string response = SocketRead(sock); //Y or N
+	if (response == "N") {
+		std::cout << "Username or password are incorrect !" << std::endl;
+		exit(0);
+	}
+	else {
+		std::cout << "Username and password are both correct !" << std::endl;
+	}
 	SocketSend(sock,name);
 	std::string nameok=SocketRead(sock);
 	if (nameok=="N") {

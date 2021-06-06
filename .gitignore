@@ -1,3 +1,6 @@
 #ignore the output and objects dir
 /out/
 /obj/
+
+#ignore IDE config files
+.vs/

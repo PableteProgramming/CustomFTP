@@ -260,26 +260,34 @@ int server(int port){
 		}
 #endif
 		signal(SIGINT, Server_Ctrl_Handler);
-		std::string name= SocketRead(client);
-		bool NameOk = true;
-		for (int i = 0; i < clients.size(); i++) {
-			if (clients[i]->GetName()==name) {
-				NameOk = false;
-				break;
-			}
-		}
-		if (NameOk) {
+		std::string userEntered = SocketRead(client);
+		SocketSend(client, "T");
+		std::string passEntered = SocketRead(client);
+		if (username==userEntered && passEntered==password) {
+			//OK
 			SocketSend(client, "Y");
-			Client* newClient = new Client(client, name);
-			clients.push_back(newClient);
-			newClient->StartThread();
-			std::cout << "Client " << name << " accepted!" << std::endl;
+			std::string name = SocketRead(client);
+			bool NameOk = true;
+			for (int i = 0; i < clients.size(); i++) {
+				if (clients[i]->GetName() == name) {
+					NameOk = false;
+					break;
+				}
+			}
+			if (NameOk) {
+				SocketSend(client, "Y");
+				Client* newClient = new Client(client, name);
+				clients.push_back(newClient);
+				newClient->StartThread();
+				std::cout << "Client " << name << " accepted!" << std::endl;
+			}
+			else {
+				SocketSend(client, "N");
+			}
 		}
 		else {
 			SocketSend(client, "N");
 		}
-		
-		
 	}
 	exitclient.join();
 	return 0;	

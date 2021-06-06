@@ -1,6 +1,7 @@
 #include <func.hpp>
+#include <sha512.hpp>
 
-int client(std::string,int,std::string);
+int client(std::string,int,std::string,std::string,std::string);
 std::vector<std::string> GetArgs(int,char**);
 
 #ifdef __linux__

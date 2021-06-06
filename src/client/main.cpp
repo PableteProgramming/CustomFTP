@@ -8,6 +8,12 @@ int main(int argc, char** argv){
 	}
 	std::string ip= args[1];
 	std::string name= args[2];
-	int result= client(ip,PORT,name);
+	std::string username;
+	std::cout << "Username: ";
+	std::getline(std::cin, username);
+	std::string password;
+	std::cout << "Password: ";
+	std::getline(std::cin, password);
+	int result= client(ip,PORT,name,username,password);
 	return 0;
 }
