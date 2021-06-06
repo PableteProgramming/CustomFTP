@@ -1,0 +1,3 @@
+#ignore the output and objects dir
+/out/
+/obj/
