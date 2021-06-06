@@ -78,9 +78,9 @@ int server(int port){
 		if (!r.first.empty() && r.second.size() == 128)
 		{
 			username = r.first;
-			std::cout << "Username : " << username << std::endl;
+			//std::cout << "Username : " << username << std::endl;
 			password = r.second;
-			std::cout << "Password : " << password << std::endl;
+			//std::cout << "Password : " << password << std::endl;
 			credentials.close();
 		}
 		else

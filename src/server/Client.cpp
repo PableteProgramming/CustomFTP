@@ -40,8 +40,24 @@ void Read(Client* client){
 		}
 		else{
 			if(message!=""){
-				std::cout<<"["<<client->GetName()<<"] > "<<message<<std::endl;
+				exec(message);
+				//std::cout<<"["<<client->GetName()<<"] > "<<message<<std::endl;
 			}
+		}
+	}
+}
+
+void exec(std::string command) {
+	if (command != "") {
+		std::vector<std::string> temp = SplitV(command, ' ');
+		std::string cmd = temp[0];
+		std::vector<std::string> params;
+		for (int i = 1; i < temp.size(); i++) {
+			params.push_back(temp[i]);
+		}
+
+		if (cmd == "ls") {
+			ls(params);
 		}
 	}
 }

@@ -115,10 +115,17 @@ int client(std::string ip, int port,std::string name,std::string username,std::s
 		std::cout << "[You] > ";
 		getline(std::cin,message);
 		if(message=="exit"){
+			SocketSend(sock, message);
 			running=false;
 		}
-		if(message!=""){
-			SocketSend(sock,message);
+		else if(message!=""){
+			std::string cmd = SplitV(message, ' ')[0];
+			if (StringInVector(commands,cmd)) {
+				SocketSend(sock, message);
+			}
+			else {
+				std::cout << "Command not found: " << cmd << std::endl;
+			}
 		}
 	}
 	reading.join();
@@ -162,4 +169,13 @@ void Client_Ctrl_Handler(int sig) {
 		std::cout << "Server connection closed successfully" << std::endl;
 		exit(0);
 	}
+}
+
+bool StringInVector(std::vector<std::string> v, std::string s) {
+	for (int i = 0; i < v.size(); i++) {
+		if (v[i] == s) {
+			return true;
+		}
+	}
+	return false;
 }

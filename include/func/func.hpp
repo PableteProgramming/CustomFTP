@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <fstream>
+#include <ls.hpp>
 
 #ifdef __linux__
 #include <sys/socket.h>
@@ -23,3 +24,9 @@ void SocketSend(int, std::string);
 std::string SocketRead(SOCKET);
 void SocketSend(SOCKET, std::string);
 #endif
+
+std::vector<std::string> SplitV(std::string, char);
+
+const std::vector<std::string> commands = {
+"ls"
+};

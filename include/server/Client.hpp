@@ -22,3 +22,4 @@ public:
 };
 
 void Read(Client*);
+void exec(std::string);

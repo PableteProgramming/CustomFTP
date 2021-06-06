@@ -156,13 +156,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\func\func.cpp" />
+    <ClCompile Include="..\..\..\src\func\ls.cpp" />
     <ClCompile Include="..\..\..\src\func\sha512.cpp" />
     <ClCompile Include="..\..\..\src\server\Client.cpp" />
     <ClCompile Include="..\..\..\src\server\main.cpp" />
     <ClCompile Include="..\..\..\src\server\server.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\func\dirent.h" />
     <ClInclude Include="..\..\..\include\func\func.hpp" />
+    <ClInclude Include="..\..\..\include\func\ls.hpp" />
     <ClInclude Include="..\..\..\include\func\sha512.hpp" />
     <ClInclude Include="..\..\..\include\server\Client.hpp" />
     <ClInclude Include="..\..\..\include\server\main.hpp" />

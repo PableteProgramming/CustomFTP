@@ -21,3 +21,20 @@ void SocketSend(SOCKET sock, std::string message) {
 	send(sock, message.c_str(), strlen(message.c_str()), 0);
 }
 #endif
+
+std::vector<std::string> SplitV(std::string s, char c) {
+	std::vector<std::string> r;
+	r.clear();
+	std::string temp = "";
+
+	for (int i = 0; i < s.size(); i++) {
+		if (s[i] == c) {
+			r.push_back(temp);
+			temp = "";
+		}
+		else {
+			temp += s[i];
+		}
+	}
+	return r;
+}

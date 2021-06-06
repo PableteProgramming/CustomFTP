@@ -11,3 +11,5 @@ void Read(SOCKET);
 #endif
 
 void Client_Ctrl_Handler(int);
+
+bool StringInVector(std::vector<std::string>, std::string);
