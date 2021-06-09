@@ -30,3 +30,5 @@ std::vector<std::string> SplitV(std::string, char);
 const std::vector<std::string> commands = {
 "ls"
 };
+
+std::string EndStrip(std::string);

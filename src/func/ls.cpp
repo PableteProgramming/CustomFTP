@@ -25,7 +25,7 @@ std::string ls(std::vector<std::string> params) {
     std::string r;
     if (dr != NULL)
     {
-        r = "\r";
+        //r = "\r\r";
         for (d = readdir(dr); d != NULL; d = readdir(dr))
         {
             if (std::string(d->d_name) != "." && std::string(d->d_name) != "..")
@@ -38,8 +38,8 @@ std::string ls(std::vector<std::string> params) {
         closedir(dr);
     }
     else {
-        return directory + " is not a valid directory!";
+        return "\r" + directory + " is not a valid directory!";
     }
-    //return "The content of " + directory + " is :\n" + r;
-    return r;
+    return "\rThe content of " + directory + " is :\n" + EndStrip(r);
+    //return EndStrip(r);
 }
