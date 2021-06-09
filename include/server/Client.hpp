@@ -22,4 +22,10 @@ public:
 };
 
 void Read(Client*);
-void exec(std::string);
+
+#ifdef __linux__
+void exec(std::string, int);
+#else
+void exec(std::string, SOCKET);
+#endif
+

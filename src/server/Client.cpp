@@ -40,24 +40,31 @@ void Read(Client* client){
 		}
 		else{
 			if(message!=""){
-				exec(message);
+				exec(message, client->GetId());
+				//std::cout << message << std::endl;
 				//std::cout<<"["<<client->GetName()<<"] > "<<message<<std::endl;
 			}
 		}
 	}
 }
 
-void exec(std::string command) {
+#ifdef __linux__
+void exec(std::string command, int sock) {
+#else
+void exec(std::string command, SOCKET sock) {
+#endif
 	if (command != "") {
 		std::vector<std::string> temp = SplitV(command, ' ');
 		std::string cmd = temp[0];
+		//std::cout << cmd << std::endl;
 		std::vector<std::string> params;
 		for (int i = 1; i < temp.size(); i++) {
 			params.push_back(temp[i]);
 		}
 
 		if (cmd == "ls") {
-			ls(params);
+			SocketSend(sock, ls(params));
+			//std::cout << ls(params) << std::endl;
 		}
 	}
 }

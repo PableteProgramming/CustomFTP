@@ -36,5 +36,6 @@ std::vector<std::string> SplitV(std::string s, char c) {
 			temp += s[i];
 		}
 	}
+	r.push_back(temp);
 	return r;
 }

@@ -120,6 +120,7 @@ int client(std::string ip, int port,std::string name,std::string username,std::s
 		}
 		else if(message!=""){
 			std::string cmd = SplitV(message, ' ')[0];
+			//std::cout << cmd << std::endl;
 			if (StringInVector(commands,cmd)) {
 				SocketSend(sock, message);
 			}
@@ -157,6 +158,11 @@ void Read(SOCKET s) {
 			else {
 				std::cout << "Connection closed !" << std::endl;
 			}
+		}
+		else
+		{
+			std::cout << message << std::endl;
+			std::cout << "[You] > ";
 		}
 	}
 }
