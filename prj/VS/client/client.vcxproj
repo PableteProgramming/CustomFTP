@@ -154,6 +154,7 @@
     <ClCompile Include="..\..\..\src\client\client.cpp" />
     <ClCompile Include="..\..\..\src\client\main.cpp" />
     <ClCompile Include="..\..\..\src\func\func.cpp" />
+    <ClCompile Include="..\..\..\src\func\ls.cpp" />
     <ClCompile Include="..\..\..\src\func\sha512.cpp" />
   </ItemGroup>
   <ItemGroup>

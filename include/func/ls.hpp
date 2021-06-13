@@ -3,4 +3,4 @@
 #include <iostream>
 #include <dirent.h>
 
-std::string ls(std::vector<std::string>);
+std::string ls(std::string);

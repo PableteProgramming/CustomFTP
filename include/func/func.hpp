@@ -27,8 +27,10 @@ void SocketSend(SOCKET, std::string);
 
 std::vector<std::string> SplitV(std::string, char);
 
-const std::vector<std::string> commands = {
-"ls"
+typedef std::string (*funcPtr)(std::string);
+
+const std::vector<std::pair<std::string, funcPtr>> commands = {
+	std::make_pair("ls",&ls)
 };
 
 std::string EndStrip(std::string);

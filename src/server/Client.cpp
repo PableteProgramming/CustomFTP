@@ -57,14 +57,21 @@ void exec(std::string command, SOCKET sock) {
 		std::vector<std::string> temp = SplitV(command, ' ');
 		std::string cmd = temp[0];
 		//std::cout << cmd << std::endl;
-		std::vector<std::string> params;
+		std::string params;
 		for (int i = 1; i < temp.size(); i++) {
-			params.push_back(temp[i]);
+			params+=temp[i]+" ";
 		}
-
-		if (cmd == "ls") {
-			SocketSend(sock, ls(params));
-			//std::cout << ls(params) << std::endl;
+		params = EndStrip(params);
+		bool found = false;
+		for (int i = 0; i < commands.size(); i++) {
+			if (commands[i].first == cmd) {
+				found = true;
+				SocketSend(sock, commands[i].second(params));
+			}
+		}
+		if (!found) {
+			std::string s = "Command not found: " + cmd;
+			SocketSend(sock, s);
 		}
 	}
 }

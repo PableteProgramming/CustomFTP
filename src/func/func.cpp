@@ -29,8 +29,10 @@ std::vector<std::string> SplitV(std::string s, char c) {
 
 	for (int i = 0; i < s.size(); i++) {
 		if (s[i] == c) {
-			r.push_back(temp);
-			temp = "";
+			if (EndStrip(temp) != "") {
+				r.push_back(temp);
+				temp = "";
+			}
 		}
 		else {
 			temp += s[i];
