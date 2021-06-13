@@ -120,7 +120,12 @@ int client(std::string ip, int port,std::string name,std::string username,std::s
 		}
 		else if(message!=""){
 			std::string cmd = SplitV(message, ' ')[0];
-			SocketSend(sock, message);
+			if (EndStrip(cmd) == "clear") {
+				clear();
+			}
+			else {
+				SocketSend(sock, message);
+			}
 		}
 	}
 	reading.join();

@@ -4,7 +4,6 @@
 std::string ls(std::string p) {
     //we have to check the params
     if (p != "") {
-        //std::cout << p << std::endl;
         std::vector<std::string> params = SplitV(p, ' ');
         std::string directory;
 

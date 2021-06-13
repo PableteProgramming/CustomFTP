@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\src\client\client.cpp" />
     <ClCompile Include="..\..\..\src\client\main.cpp" />
+    <ClCompile Include="..\..\..\src\func\clear.cpp" />
     <ClCompile Include="..\..\..\src\func\func.cpp" />
     <ClCompile Include="..\..\..\src\func\ls.cpp" />
     <ClCompile Include="..\..\..\src\func\sha512.cpp" />
@@ -160,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\include\client\client.hpp" />
     <ClInclude Include="..\..\..\include\client\main.hpp" />
+    <ClInclude Include="..\..\..\include\func\clear.hpp" />
     <ClInclude Include="..\..\..\include\func\func.hpp" />
     <ClInclude Include="..\..\..\include\func\sha512.hpp" />
   </ItemGroup>
