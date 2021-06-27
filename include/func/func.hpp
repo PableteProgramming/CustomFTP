@@ -34,3 +34,37 @@ const std::vector<std::pair<std::string, funcPtr>> commands = {
 };
 
 std::string EndStrip(std::string);
+
+void print(std::string);
+
+const int fRed = 31;
+const int bRed = 41;
+const int fGreen = 32;
+const int bGreen = 42;
+const int fYellow = 33;
+const int bYellow = 43;
+const int fBlue = 34;
+const int bBlue = 44;
+const int fMagenta = 35;
+const int bMagenta = 45;
+const int fCyan = 36;
+const int bCyan = 46;
+const int fWhite = 37;
+const int bWhite = 47;
+
+const int reset = 0;
+const int bold = 1;
+const int underline = 4;
+const int inverse = 7;
+const int boldOff = 21;
+const int underlineOff = 24;
+const int inverseOff = 27;
+
+const int wBlack = 0;
+const int wBlue = 1;
+const int wGreen = 2;
+const int wCyan = 3;
+const int wRed = 4;
+const int wMagenta = 5;
+const int wYellow = 14;
+const int wWhite = 15;

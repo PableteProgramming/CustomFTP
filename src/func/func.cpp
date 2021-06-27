@@ -70,3 +70,132 @@ std::string EndStrip(std::string s)
 
 	return r;
 }
+
+void print(std::string s)
+{
+#ifdef __linux__
+	std::cout << s << std::endl;
+#else
+	for (int i = 0; i < s.size(); i++)
+	{
+		if (s[i] == '\033' && i < s.size() - 2)
+		{
+			if (s[i + 1] == '[')
+			{
+				std::string temp;
+				for (int j = i + 2; j < s.size(); j++)
+				{
+					if (s[j] != 'm')
+					{
+						temp += s[j];
+					}
+					else
+					{
+						break;
+					}
+				}
+				std::vector<std::string> elements = SplitV(temp, ';');
+				HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+				for (int j = 0; j < elements.size(); j++)
+				{
+					//std::cout << elements[j] << std::endl;
+					size_t size = elements[j].size();
+					//std::cout << "Size : " << size << std::endl;
+					int foreground = -1, background = -1;
+					int value = std::stoi(elements[j].c_str(), &size);
+					std::cout << "STOI : " << value << std::endl;
+					switch (std::stoi(elements[j].c_str(), &size))
+					{
+					case fRed:
+					{
+						foreground = wRed;
+						std::cout << "Setting foreground to red" << std::endl;
+						break;
+					}
+					case bRed:
+					{
+						background = wRed;
+						break;
+					}
+					case fBlue:
+					{
+						foreground = wBlue;
+						break;
+					}
+					case bBlue:
+					{
+						background = wBlue;
+						break;
+					}
+					case fGreen:
+					{
+						foreground = wGreen;
+						break;
+					}
+					case bGreen:
+					{
+						background = wGreen;
+						break;
+					}
+					case fYellow:
+					{
+						foreground = wYellow;
+						break;
+					}
+					case bYellow:
+					{
+						background = wYellow;
+						break;
+					}
+					case fCyan:
+					{
+						foreground = wCyan;
+						break;
+					}
+					case bCyan:
+					{
+						background = wCyan;
+						break;
+					}
+					case fMagenta:
+					{
+						foreground = wMagenta;
+						break;
+					}
+					case bMagenta:
+					{
+						background = wMagenta;
+						break;
+					}
+					case fWhite:
+					{
+						foreground = wWhite;
+						break;
+					}
+					case bWhite:
+					{
+						background = wWhite;
+						break;
+					}
+					default:
+						break;
+					}
+					
+					/*if (std::stoi(elements[j].c_str(), &size) == reset)
+					{
+						SetConsoleTextAttribute(consoleHandle, 15);
+					}
+					else
+					{
+						SetConsoleTextAttribute(consoleHandle, foreground + background * 16);
+					}*/
+					SetConsoleTextAttribute(consoleHandle, 4);
+					std::cout << "Foreground : " << foreground << std::endl;
+					std::cout << "Background : " << background << std::endl;
+					std::cout << elements[j] << std::endl;
+				}
+			}
+		}
+	}
+#endif
+}

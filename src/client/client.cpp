@@ -160,7 +160,8 @@ void Read(SOCKET s) {
 		}
 		else
 		{
-			std::cout << message << std::endl;
+			//std::cout << message << std::endl;
+			print(message);
 			std::cout << "[You] > ";
 		}
 	}

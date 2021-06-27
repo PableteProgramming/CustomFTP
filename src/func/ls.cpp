@@ -41,7 +41,7 @@ std::string ls(std::string p) {
         else {
             return "\r" + directory + " is not a valid directory!";
         }
-        return "\rThe content of " + directory + " is :\n" + EndStrip(r);
+        return "\r\033[31mThe content of " + directory + " is :\033[0m\n" + EndStrip(r);
     }
     return "\rPlease specify the directory to list";
 }
